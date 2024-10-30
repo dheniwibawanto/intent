@@ -1,6 +1,7 @@
 package com.example.myintentapp
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.service.autofill.OnClickAction
 import android.widget.Button
@@ -23,6 +24,16 @@ class MainActivity : AppCompatActivity() {
         btnMoveActivity.setOnClickListener {
             OnClick()
         }
+        val btnDialNumber = findViewById<Button>(R.id.btn_dial_number)
+        btnDialNumber.setOnClickListener {
+            OnDial()
+        }
+    }
+
+    private fun OnDial() {
+        val dialNumber = "08125258853"
+        val intent = Intent (Intent.ACTION_DIAL, Uri.parse("tel:" + dialNumber))
+        startActivity(intent)
     }
 
     private fun OnClick() {
